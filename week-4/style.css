@@ -1,0 +1,25 @@
+body{
+  height: 90vh
+}
+
+#clearContainer{
+  position: relative;
+  top: 450px
+}
+
+#display{
+  width: 250px;
+  height: 250px;
+  background-color: rgba(0,0,0,0);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border: 1px solid black;
+  z-index: 1;
+}
+
+#clear{
+  position: absolute;
+  bottom: 5px;
+  left: 5px
+}

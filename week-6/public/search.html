@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <form method='GET' action='/search'>
+    Search by Author: <input type="search" name="author">
+  </form>
+
+  <h2>Search Results:</h2>
+  <div id='results'>
+    <ul>
+    </ul>
+  </div>
+
+  <script>
+    fetch('/search.json' + document.location.search)
+      .then((response) => response.json())
+      .then(fillArticles);
+
+    function fillArticles(articles) {
+      let list = document.querySelector('#results > ul');
+      if(articles.length === 0) {
+        list.innerHTML = 'No results found...'
+      } else for(let article of articles){
+        let item = document.createElement('li');
+    let html = '<a href="/articles/' + article.id + '">' + article.title + '</a>';
+    if (article.author) {
+      html += ' (by ' + article.author + ')';
+      }
+      item.innerHTML = html;
+      list.appendChild(item)
+    }
+  }
+  </script>
+</body>
+</html>

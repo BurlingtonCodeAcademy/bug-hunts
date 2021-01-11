@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Welcome to the Library!</h1>
+  <div id='root'></div>
+  <h4>Add a new Book:</h4>
+  <form id='add-book' method="POST" action="/books">
+    <input type='text' name='title' placeholder="title" />
+    <input type="text" name='author' placeholder="author" />
+    <label for='copies'>Copies left:</label><input type="number" name='copies' />
+    <label for='instock'>In Stock:</label><input type="checkbox" name='instock' />
+    <input type='submit /'>
+  </form>
+
+  <script>
+    let root = document.getElementById('root')
+    let addBookForm = document.getElementById(addBookForm)
+    let allBooks = []
+
+    async function loadData() {
+
+      await fetch('/books')
+        .then(res => res.json())
+        .then(bookArr => {
+          console.log(bookArr)
+          bookArr.forEach(book => {
+            allBooks.push(book)
+          })
+        })
+
+      allBooks.forEach((book, index) => {
+        let bookElement = (
+          `<hr />
+          <h3>${book.title}</h3>
+          <h4>${book.author}</h4>
+          <button id='edit-${index}' onclick='editBook()'>Edit Book Data</button>
+          <button id='delete-${book._id}' onclick='removeBook()'>Remove Book</button>
+          <div id='edit-container-${index}'></div>
+          `
+        )
+
+        root.innerHTML += bookElement
+      })
+    }
+
+    function editBook() {
+      let index = event.target.id.split('-')[1]
+      let book = allBooks[index]
+      let formTarget = document.getElementById('edit-container-' + index)
+
+      let editForm = (`
+    <form method="POST" action="/books/${book._id}">
+      <input type='text' name='title' value=${book.title} />
+      <input type="text" name='author' value=${book.author} />
+      <label for='copies'>Copies left:</label><input type="number" name='copies' value=${book.copies}/>
+      <label for='instock'>In Stock:</label><input type="checkbox" name='instock' checked=${!book.checkedout}/>
+      <input type='submit /'>
+    </form>
+      `)
+
+      formTarget.innerHTML = editForm
+    }
+
+    function removeBook() {
+      let index = event.target.id.split('-')[1]
+      let bookId = allBooks[index]._id
+
+      fetch('/delete/' + bookId)
+    }
+  </script>
+</body>
+
+</html>

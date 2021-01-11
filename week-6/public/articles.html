@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h2>Articles:</h2>
+  <div id="articles">
+    <ul>
+
+    </ul>
+  </div>
+
+  <script>
+    fetch('/articles.json')
+      .then((response) => response.json())
+      .then(fillArticles)
+
+    function fillArticles(articles) {
+      let list = document.querySelector('#articles > ul');
+      for (let article of articles) {
+        const item = document.createElement('li');
+        let html = '<a href="/articles/' + article.id +'">' + article.title + '</a>'
+        if (article.author) {
+          html += `(by ${article.author})`
+        }
+        item.innerHTML = html;
+        list.appendChild(item);
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+img {
+  max-width: 100vw;
+}
+
+div img {
+  float: left
+}
+
+#blue {
+  color: rgb(0, 0, 255);
+}
+
+#purple {
+  color: rgb(150, 0, 200)
+}
+
+#red {
+  color: rgb(255, 0, 75)
+}
+
+#orange {
+  color: rgb(250, 100, 0)
+}
+
+#left_column {
+  width: 30vh;
+  float: left
+}
+
+#right_column {
+  width: 30vh;
+  float: right
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Express Blog</h1>
+  <form method='GET' action='/search'>
+    <label for='search'>Search by Author:
+      <input type="search" name="author">
+    </label>
+    <input type='submit' value='search'>
+  </form>
+
+  <!--Emmet abreviation for ul:
+ul>li*3>a[href="/articles"]
+-->
+
+  <ul>
+    <li>
+      <a href="/articles/1">Featured Article</a>
+    </li>
+    <li>
+      <a href="/articles">All Articles</a>
+    </li>
+    <li>
+      <a href="/publish">Publish a New Article</a>
+    </li>
+
+  </ul>
+</body>
+
+</html>

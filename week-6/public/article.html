@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div class="article">
+    <h2 id='title'></h2>
+    <i>by <span id="author"></span></i>
+    <p id="body"></p>
+  </div>
+  <script>
+    let articleId = document.location.pathname.split('/').splice(-1);
+
+    fetch('/articles/' + articleId + '.json')
+      .then((response) => response.json())
+      .then(fillArticle)
+
+    function fillArticle(article) {
+      document.getElementById('title').textContent = article.title;
+      document.getElementById('author').textContent = article.author;
+      document.getElementById('body').textContent = article.body;
+    }
+  </script>
+</body>
+</html>

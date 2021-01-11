@@ -1,0 +1,12 @@
+
+#wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#display {
+  height: 450px;
+  width: 450px;
+  border: 1px solid black
+}
