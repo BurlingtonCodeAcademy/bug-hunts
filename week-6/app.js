@@ -98,6 +98,7 @@ function nextArticleId() {
 }
 
 function createArticle(articleId, params, response) {
+  console.log('creating post')
   const article = {
     id: articleId,
     author: params.author.trim(),
@@ -105,8 +106,8 @@ function createArticle(articleId, params, response) {
     body: params.body.trim()
   };
 
-  const articleDataFile = $path.join(articlesDir, articleId + ".json");
-  fs.writeFile(articleDataFile, JSON.stringify(article), (err)=>{
+  const articleDataFile = './articles/' + articleId + ".json";
+  fs.writeFile(articleDataFile, JSON.stringify(article), (err) => {
     if (err) {
       response.status(500).send(err)
     } else {
