@@ -18,7 +18,7 @@
   </div>
 
   <script>
-    fetch('/search.json' + document.location.search)
+    fetch('/api/search' + document.location.search)
       .then((response) => response.json())
       .then(fillArticles);
 

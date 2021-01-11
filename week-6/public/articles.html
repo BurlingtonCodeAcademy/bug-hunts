@@ -15,11 +15,12 @@
   </div>
 
   <script>
-    fetch('/articles.json')
+    fetch('/api/articles')
       .then((response) => response.json())
       .then(fillArticles)
 
     function fillArticles(articles) {
+      console.log(articles)
       let list = document.querySelector('#articles > ul');
       for (let article of articles) {
         const item = document.createElement('li');

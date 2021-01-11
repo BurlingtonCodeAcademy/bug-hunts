@@ -15,7 +15,7 @@
   <script>
     let articleId = document.location.pathname.split('/').splice(-1);
 
-    fetch('/articles/' + articleId + '.json')
+    fetch('/api/' + articleId + '.json')
       .then((response) => response.json())
       .then(fillArticle)
 
