@@ -9,7 +9,7 @@ function ask(questionText) {
 }
 
 //Beware! Beyond this point lie bugs!
-function adder() {
+async function adder() {
   let response = await ask("Let's add some numbers together!\nAre you ready? ")
 
   while (response !== 'yes') {
@@ -18,17 +18,20 @@ function adder() {
 
   let number = await ask('What number are we starting with? ')
 
-  if(number = NaN) {
+  if(parseInt(number) === NaN) {
     number = await ask("Let's try this again. Please enter a number. ")
   } else {
     let addThis = await ask("Keep entering numbers to add. Then type 'done' to see the result. ")
 
     while (addThis !== 'done') {
-      number += addThis
+      number = parseInt(number)
+      number += parseInt(addThis)
       
-      let addThis = await ask('Enter the next number, or "done" ')
+      addThis = await ask('Enter the next number, or "done" ')
     }
 
     console.log(number)
   }
 }
+
+adder()
