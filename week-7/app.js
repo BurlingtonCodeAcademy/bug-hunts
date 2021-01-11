@@ -36,7 +36,9 @@ app.post('/books/:id', express.urlencoded(), (req, res) => {
 app.post('/books', express.urlencoded(), (req, res) => {
   let data = req.body
 
-  addBook(data)
+  console.log(data)
+
+  addBook(data.title, data.author, parseInt(data.copies), data.instock === 'on' ? false : true)
   res.redirect('/')
 })
 
@@ -48,7 +50,7 @@ app.get('/delete/:id', (req, res) => {
   res.redirect('/')
 })
 
-async function showData() {
+async function showData(req, res) {
   let cursor = await libraryDB.getAll()
   let allDocs = []
 
@@ -56,7 +58,7 @@ async function showData() {
     allDocs.push(entry)
   })
 
-  console.log(allDocs)
+  res.send(allDocs)
 
 }
 
@@ -84,10 +86,16 @@ async function addBook(title, author, checkedOut, copiesLeft) {
   return
 }
 
-async function updateBook(id, category, update) {
-  let updateObj = { [category]: update }
+async function updateBook(id, updateObj) {
 
-  await libraryDB.updateDoc(id, updateObj)
+  let bookObj = {
+    author: updateObj.author,
+    title: updateObj.title,
+    copies: parseInt(updateObj.copies),
+    checkedout: updateObj.instock === 'on' ? false : true
+  }
+
+  await libraryDB.updateDoc(id, bookObj)
 }
 
 async function removeBook(id) {

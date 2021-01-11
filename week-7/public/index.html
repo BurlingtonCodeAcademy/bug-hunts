@@ -16,13 +16,15 @@
     <input type="text" name='author' placeholder="author" />
     <label for='copies'>Copies left:</label><input type="number" name='copies' />
     <label for='instock'>In Stock:</label><input type="checkbox" name='instock' />
-    <input type='submit /'>
+    <input type='submit' />
   </form>
 
   <script>
     let root = document.getElementById('root')
-    let addBookForm = document.getElementById(addBookForm)
+    let addBookForm = document.getElementById('add-book')
     let allBooks = []
+
+    loadData()
 
     async function loadData() {
 
@@ -61,7 +63,7 @@
       <input type="text" name='author' value=${book.author} />
       <label for='copies'>Copies left:</label><input type="number" name='copies' value=${book.copies}/>
       <label for='instock'>In Stock:</label><input type="checkbox" name='instock' checked=${!book.checkedout}/>
-      <input type='submit /'>
+      <input type='submit' />
     </form>
       `)
 
@@ -69,9 +71,8 @@
     }
 
     function removeBook() {
-      let index = event.target.id.split('-')[1]
-      let bookId = allBooks[index]._id
-
+      let bookId = event.target.id.split('-')[1]
+      
       fetch('/delete/' + bookId)
     }
   </script>
