@@ -1,8 +1,11 @@
 import React from 'react';
 import './App.css';
+import { useState } from 'react';
+import ColorChanger from './ColorChanger';
+import DisplayBox from './DisplayBox'
 
 function Home(props) {
-  useState({color: 'blue'})
+  const [color, setColor] = useState('blue')
 
   function colorHandler(evt) {
     evt.preventDefault()
@@ -10,15 +13,15 @@ function Home(props) {
     let blueVal = Math.floor(Math.random() * 256)
     let greenVal = Math.floor(Math.random() * 256)
 
-    this.setState({ color: rgb(redVal, greenVal, blueVal, 1) })
+    setColor(`rgb(${redVal}, ${greenVal}, ${blueVal}, 1)`)
   }
 
   return (
     <div id='wrapper'>
-      <ColorChanger />
-      <DisplayBox />
+      <ColorChanger colorHandler={colorHandler}/>
+      <DisplayBox color={color}/>
     </div>
   );
 }
 
-export default App;
+export default Home;
