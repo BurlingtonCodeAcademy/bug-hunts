@@ -6,25 +6,27 @@ class Transformer {
     this.altForms = altForms
   }
   changeTo(nextForm){
-    if(altForms.includes(nextForm)) {
-      form = nextForm
+    if(this.altForms && this.altForms.includes(nextForm)) {
+      this.form = nextForm
       console.log(`Transormed into ${nextForm}`)
     } else {
       console.log('ERROR, ERROR, INVALID FORM', nextForm)
     }
   }
   slogan() {
-    if(team === 'decepticons') {
+    if(this.team === 'decepticons') {
       console.log('Decepticons attack!')
-    } else if(team === 'autobots') {
+    } else if(this.team === 'autobots') {
       console.log('Autobots roll out!')
+    } else {
+      console.log('Run away!')
     }
   }
 }
 
-let megatron = new Transformer('Megatron', 'robot', 'decepticon', ['t-rex', 'tank', 'jet'])
+let megatron = new Transformer('Megatron', 'robot', 'decepticon', ['robot', 't-rex', 'tank', 'jet'])
 
-let optimus = new Transformer('Optimus Prime', 'robot', 'autobot', ['truck', 'lamborghini'])
+let optimus = new Transformer('Optimus Prime', 'robot', 'autobot', ['robot', 'truck', 'lamborghini'])
 
 let mark = new Transformer('Mark Whalberg', 'human')
 
@@ -40,11 +42,16 @@ console.log(megatron.form)
 megatron.slogan()
 
 optimus.changeTo('truck')
+console.log(optimus.form)
 optimus.changeTo('lamborghini')
+console.log(optimus.form)
 optimus.changeTo('robot')
+console.log(optimus.form)
 
 optimus.slogan()
 
 mark.changeTo('toaster')
+console.log(mark.form)
 mark.changeTo()
+console.log(mark.form)
 mark.slogan()
