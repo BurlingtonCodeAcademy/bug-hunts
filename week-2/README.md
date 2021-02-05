@@ -19,14 +19,11 @@ Transormed into robot
 robot
 ERROR, ERROR, INVALID FORM toaster
 robot
-Run away!
+Decepticons attack!
 Transormed into truck
-truck
 Transormed into lamborghini
-lamborghini
 Transormed into robot
-robot
-Run away!
+Autobots roll out!
 ERROR, ERROR, INVALID FORM toaster
 human
 ERROR, ERROR, INVALID FORM undefined
