@@ -1,6 +1,7 @@
 body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden
 }
 
 img {
@@ -10,6 +11,10 @@ img {
 div img {
   float: left;
   width: 200px;
+}
+
+div > p {
+  margin: 0 2px
 }
 
 #title {
@@ -39,9 +44,12 @@ div img {
 #left_column {
   width: 30vw;
   float: left;
+  padding-left: 10vw
 }
 
 #right_column {
   width: 30vw;
   float: right;
+  padding-right: 10vw;
+  text-align: right
 }
