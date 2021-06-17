@@ -24,9 +24,9 @@ class Transformer {
   }
 }
 
-let megatron = new Transformer('Megatron', 'robot', 'decepticon', ['robot', 't-rex', 'tank', 'jet'])
+let megatron = new Transformer('Megatron', 'robot', 'decepticons', ['robot', 't-rex', 'tank', 'jet'])
 
-let optimus = new Transformer('Optimus Prime', 'robot', 'autobot', ['robot', 'truck', 'lamborghini'])
+let optimus = new Transformer('Optimus Prime', 'robot', 'autobots', ['robot', 'truck', 'lamborghini'])
 
 let mark = new Transformer('Mark Whalberg', 'human')
 
